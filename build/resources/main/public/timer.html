@@ -1,0 +1,60 @@
+<html>
+	<script src="jquery-3.1.1.min.js"></script>
+	<script src="timer.js"></script>
+	<head>
+		<title>Sure Steps</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<!--http://getbootstrap.com/getting-started/-->
+		<link rel="shortcut icon" href= "favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<div class="page-header">
+			<!--<p><h1>Sure Steps</h1></p>-->
+			<p><img src="stedi-logo-4000px-x-4000px.png" width="400" height="400" style="background-color:black;"/></p>
+		</div>
+		<p class="stepcount">Date of Birth: <a id="dob"></a></p>
+	<div style="text-align:center">
+	<p>
+		<input class="stopwatch" id="stopwatch" value="0:0:0" type="text"><br>
+	</p>
+
+	<p>
+    	<input class="btn-lg btn-primary" id="startandstopbutton" value="Start/Stop" onclick="startandstop();" type="button"><br>
+	</p>
+	<p>
+		<input class="btn-lg btn-primary" id="counterbutton" value="Add Step" onclick="onStep();" type="button"><br>
+	</p>
+	<p>
+		<input class="btn btn-lg btn-primary" id="resetbutton" value="Reset Stopwatch" onclick="resetstopwatch();" type="button"><br>
+	</p>
+   	 <p class="stepcount">Step Count: <a id="clicks">0</a></p>
+	<br>
+	<br>
+	<br>
+		<p>
+			<a  class="stepcount" id="findusr" href="/findcustomer.html">Select Customer</a>
+		</p>
+	<br>
+		<p>
+			<a  class="stepcount" id="newusr" href="/createcustomer.html">Create New Customer</a>
+		</p>
+	<br>
+	<a href="http://www.stedi.fit">Overview Page</a>
+	<br>
+	<br>
+	
+	<a href= "http://www.stedi.fit"> About Us </a><br>
+	<a href= "http://www.stedi.fit">Contact Us</a>
+
+	</div>
+
+
+	
+	</body>
+
+</html>
+
+
+
+
+
