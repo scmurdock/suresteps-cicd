@@ -55,7 +55,7 @@ public class CreateNewUser {
         if(!password.equals(verifyPassword)){ //add validation - create method complexPW
             throw new Exception("Passwords do not match");
         }else if(!validatePassword(password)) {
-            throw new Exception ("Your password must contain a lowercase and uppercase letter, a number, a special character, and be at least 6 characters long.");
+            throw new Exception ("Your password must contain a lowercase and uppercase letter, a number, a special character, and be between 6 and 40 characters long.");
         }else{
             String newPw = JasyptPwSecurity.encrypt(password);
             addUser.setPassword(newPw);
@@ -96,7 +96,26 @@ public class CreateNewUser {
     // must contain one digit, one lower case char, one upper case char, some special chars, length should be within 6 to 15 chars.
 
     private static Pattern pswPtrn =
-            Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{6,15})");
+            Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!]).{6,40})");
+
+    // (?=.*  this means search to the right in the string for any number of characters
+    // \d this means a digit (0-9)
+
+    // so now we know we have found one digit
+
+    // [] this means a character set
+    // a-z this defines the range between a and z
+
+    // so now we know we have found one lower case letter
+
+    // A-Z this defines the range between a and z
+
+    // now we know we have found one upper case letter
+
+    // [] this means a character set
+    // @#$%! this defines the set
+
+    // now we know we have found a special character
 
     public static boolean validatePassword(String password){
 
