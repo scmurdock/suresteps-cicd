@@ -49,6 +49,7 @@ public class StepHistory {
     }
 
     public static String riskScore(String email) throws Exception{
+        System.out.println("Received score request");
         ArrayList<RapidStepTest> allTests = JedisData.getEntityList(RapidStepTest.class);
         Predicate<RapidStepTest> historicUserPredicate = stepTest -> stepTest.getCustomer().getEmail().equals(email);
 
@@ -71,7 +72,7 @@ public class StepHistory {
         //positive means they have improved
         //negative means they have declined
 
-
+        System.out.println("Score: "+riskScore.setScale(2, BigDecimal.ROUND_HALF_UP).toString());
         return riskScore.setScale(2, BigDecimal.ROUND_HALF_UP).toString();//score of magnitude 10 or larger means significant change in risk
     }
 
