@@ -47,6 +47,21 @@
 
     }
 
+    var getRiskScore = () => {
+        $.ajax({
+            type: 'GET',
+            url: '/riskscore/'+customer.email,
+            success: function(data) {
+                document.getElementById('score').innerHTML = data;
+            },
+            headers: { "suresteps.session.token": localStorage.getItem("token")},
+            contentType: "application/text",
+            dataType: 'text'
+        });
+
+    }
+
+
     var updateStepCount = (webSocketPayload) => {
         if(webSocketPayload.data=="startTimer"){
             startandstop();
@@ -68,17 +83,21 @@
         document.getElementById("clicks").innerHTML = clicks;
         if(clicks==30){
         	startandstop();
+        	var testTime = stepTime-starttime;
             var rapidStepTest = {
                token: localStorage.getItem("token"),
                startTime: starttime,
                stopTime: stepTime,
+               testTime: testTime,
                totalSteps: 30,
                stepPoints: stepsTaken,
                customer: customer
             };
             saveRapidStepTest(rapidStepTest);
+            getRiskScore();
             clicks=0;
             previousStepTime=null;
+            stepPoints = [];
  //           webSocket.close();
         }
 
@@ -144,6 +163,7 @@
         {
             stopwatch.value = "0:0:0";
             document.getElementById("clicks").innerHTML = 0;
+            document.getElementById('score').innerHTML='';
         }
     }
 

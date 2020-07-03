@@ -53,7 +53,7 @@ public class StepHistory {
         Predicate<RapidStepTest> historicUserPredicate = stepTest -> stepTest.getCustomer().getEmail().equals(email);
 
         List<RapidStepTest> rapidStepTestsSortedByDate = allTests.stream().filter(historicUserPredicate).sorted(Comparator.comparing(RapidStepTest::getStartTime)).collect(Collectors.toList());
-        if (rapidStepTestsSortedByDate.size()<2){
+        if (rapidStepTestsSortedByDate.size()<4){
             throw new Exception("Customer "+email+" has: "+rapidStepTestsSortedByDate.size()+" rapid step tests on file which is less than the required number(2) to calculate fall risk.");
         }
 
@@ -67,7 +67,7 @@ public class StepHistory {
 
         BigDecimal previousTestAverageScore = BigDecimal.valueOf((thirdMostRecentTest.getStopTime()-thirdMostRecentTest.getStartTime())+ (fourthMostRecentTest.getStopTime()-fourthMostRecentTest.getStartTime())).divide(BigDecimal.valueOf(2l));
 
-        BigDecimal riskScore = (currentTestAverageScore.subtract(previousTestAverageScore)).divide(new BigDecimal(1000l));
+        BigDecimal riskScore = (previousTestAverageScore.subtract(currentTestAverageScore)).divide(new BigDecimal(1000l));
         //positive means they have improved
         //negative means they have declined
 

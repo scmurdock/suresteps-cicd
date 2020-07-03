@@ -14,6 +14,7 @@ public class RapidStepTest {
     private Long startTime;
     private ArrayList<Long> stepPoints;
     private Long stopTime;
+    private Long testTime;
     private Integer totalSteps;
     private Integer feelingScore;
     private Customer customer;
@@ -56,6 +57,14 @@ public class RapidStepTest {
 
     public void setStopTime(Long stopTime) {
         this.stopTime = stopTime;
+    }
+
+    public Long getTestTime() {
+        return testTime;
+    }
+
+    public void setTestTime(Long testTime) {
+        this.testTime = testTime;
     }
 
     public Integer getTotalSteps() {
