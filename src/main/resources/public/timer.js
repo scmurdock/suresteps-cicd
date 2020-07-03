@@ -97,7 +97,7 @@
             getRiskScore();
             clicks=0;
             previousStepTime=null;
-            stepPoints = [];
+            stepsTaken = [];
  //           webSocket.close();
         }
 
