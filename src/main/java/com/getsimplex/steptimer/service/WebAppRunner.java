@@ -73,7 +73,8 @@ public class WebAppRunner {
             try{
                 userFilter(req, res);
             } catch (Exception e){
-                return "/";
+                System.out.println("*** Error Finding Risk Score: "+e.getMessage());
+                return null;
             }
             return riskScore(req.params(":customer"));
         }));
